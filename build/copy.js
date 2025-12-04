@@ -2,7 +2,7 @@ const gulp = require('gulp');
 var shelljs = require('shelljs');
 const fs = require('fs');
 
-const extensionsAssets = ['images', 'barcode.reportitem.css', 'barcode.reportitem.js', 'qrbarcode.reportitem.js', 'signature.reportitem.css','signature.dialog.css','signature.reportitem.js','signature.dialog.js','shape.reportitem.css','shape.reportitem.js','document.reportitem.css','pdfdocument.reportitem.js','htmldocument.reportitem.js'];
+const extensionsAssets = ['images', 'barcode.reportitem.css', 'barcode.reportitem.js', 'qrbarcode.reportitem.js', 'signature.reportitem.css','signature.dialog.css','signature.reportitem.js','signature.dialog.js','shape.reportitem.css','shape.reportitem.js','document.reportitem.css','pdfdocument.reportitem.js','htmldocument.reportitem.js', 'pdf.signature.reportitem.css', 'pdf.signature.reportitem.js'];
 const extensionsItemSrcDir = 'node_modules/@boldreports/javascript-reporting-extensions/';
 const extensionsItemDir = './src/controls/extensions/report-item-extensions/';
 const extensionsExportTemp = {
@@ -18,19 +18,6 @@ const extensionsExportTemp = {
 gulp.task('copy-src-assets', function (done) {
     shelljs.mkdir(`${process.cwd()}/public/report-viewer`);
     copyFile(`${process.cwd()}/src/controls/*.js`, `${process.cwd()}/public/report-viewer/`);
-    done();
-});
-
-gulp.task('copy-dependent-scripts', function (done) {
-    shelljs.mkdir('-p',`${process.cwd()}/public/assets/scripts`);
-    var dependentScriptLocation = `${process.cwd()}/public/assets/scripts`;
-    copyFile(`${process.cwd()}/node_modules/@boldreports/javascript-reporting-controls/Scripts/common/ej2-base.min.js`,dependentScriptLocation);
-    copyFile(`${process.cwd()}/node_modules/@boldreports/javascript-reporting-controls/Scripts/common/ej2-data.min.js`,dependentScriptLocation);
-    copyFile(`${process.cwd()}/node_modules/@boldreports/javascript-reporting-controls/Scripts/common/ej2-pdf-export.min.js`,dependentScriptLocation);
-    copyFile(`${process.cwd()}/node_modules/@boldreports/javascript-reporting-controls/Scripts/common/ej2-svg-base.min.js`,dependentScriptLocation);
-    copyFile(`${process.cwd()}/node_modules/@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej2-lineargauge.min.js`,dependentScriptLocation);
-    copyFile(`${process.cwd()}/node_modules/@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej2-circulargauge.min.js`,dependentScriptLocation);
-    copyFile(`${process.cwd()}/node_modules/@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej2-maps.min.js`,dependentScriptLocation);
     done();
 });
 
