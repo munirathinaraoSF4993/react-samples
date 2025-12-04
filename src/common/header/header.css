@@ -86,6 +86,9 @@
   font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
   justify-content: space-between;
 }
+.ej-sb-header.designer-header {
+  z-index: 1 !important;
+}
 
 .ej-sb-header .ej-sb-left-side {
   height: inherit;

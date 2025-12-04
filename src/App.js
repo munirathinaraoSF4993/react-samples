@@ -25,20 +25,42 @@ const samples = data.samples;
 class App extends React.Component {
   renderViewer = (routerProps) => {
     var previewUrl = routerProps.match.url.toString();
-    previewUrl = previewUrl.substr(previewUrl.lastIndexOf('/') + 1, previewUrl.length - 1);
+    previewUrl = previewUrl.replace(/\/+$/, '').split('/').pop();
     var isPreview = previewUrl === "preview" ? true : false;
     let samplePathName = routerProps.match.params.id;
     let foundViewer = samples.find(sample => sample.routerPath === samplePathName);
-    return (foundViewer ? isPreview ? <MainContentPreview report={foundViewer} /> : <MainContentSample report={foundViewer} /> : <Redirect to={"/report-viewer/product-line-sales"} />)
+    return (foundViewer ? isPreview ? <MainContentPreview report={foundViewer} /> : <MainContentSample report={foundViewer} /> : <Redirect to={"/report-viewer/product-line-sales/"} />)
   }
+
+  addTrailingSlash = () => {
+    const rawHash = window.location.hash || '#/';
+    let [path, query = ''] = rawHash.slice(1).split('?');
+    query = query ? `?${query}` : '';
+    const redirectionMap = {
+      '/report-designer': '/report-designer/',
+      '/report-designer/rdlc': '/report-designer/rdlc/',
+    };
+    let normalizedPath = redirectionMap[path] || path;
+    if (!normalizedPath.endsWith('/') && /^\/report-viewer\/[^/]+(?:\/preview)?$/.test(normalizedPath)) {
+      normalizedPath += '/';
+    }
+    const normalizedHash = `${normalizedPath}${query}`;
+    if (normalizedHash !== rawHash.slice(1)) {
+      window.location.hash = normalizedHash;
+    }
+  }
+
   state = {
     redirect: false
   }
   componentDidMount() {
+    this.addTrailingSlash();
+    window.addEventListener('hashchange', this.addTrailingSlash, { passive: true });
     this.id = setTimeout(() => this.setState({ redirect: true }), 2000);
   }
   componentWillUnmount() {
-    clearTimeout(this.id)
+    window.removeEventListener('hashchange', this.addTrailingSlash);
+    clearTimeout(this.id);
   }
   render() {
     return (
@@ -46,25 +68,25 @@ class App extends React.Component {
         <div className="mobile-overlay e-hidden"></div>
         <div className="ej-overlay e-hidden"></div>
         <Switch>
-          <Route exact path={'/report-designer'} >
+          <Route exact path={'/report-designer/'} >
             {
               this.state.redirect ? <Designer /> : <IndexLoading />
             }
           </Route>
-          <Route exact path={'/report-designer/rdlc'} >
+          <Route exact path={'/report-designer/rdlc/'} >
             {
               this.state.redirect ? <Designer reportType={'rdlc'} /> : <IndexLoading />
             }
           </Route>
-          <Route exact path={['/', '/report-viewer']} >
+          <Route exact path={['/', '/report-viewer', '/report-viewer/']} >
             {
-              this.state.redirect ? <Redirect to={"/report-viewer/product-line-sales"} render={routerProps => this.renderViewer(routerProps)} exact /> : <IndexLoading />
+              this.state.redirect ? <Redirect to={"/report-viewer/product-line-sales/"} render={routerProps => this.renderViewer(routerProps)} exact /> : <IndexLoading />
             }
           </Route>
-          <Route path={"/report-viewer/:id"} render={routerProps => this.renderViewer(routerProps)} exact></Route>
-          <Route path={"/report-viewer/:id/preview"} render={routerProps => this.renderViewer(routerProps)} exact></Route>
+          <Route path={"/report-viewer/:id/"} render={routerProps => this.renderViewer(routerProps)} exact></Route>
+          <Route path={"/report-viewer/:id/preview/"} render={routerProps => this.renderViewer(routerProps)} exact></Route>
           <Route path={'*'}>
-            <Redirect to={"/report-viewer/product-line-sales"}></Redirect>
+            <Redirect to={"/report-viewer/product-line-sales/"}></Redirect>
           </Route>
         </Switch>
       </div>

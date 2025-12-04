@@ -36,7 +36,7 @@ class MainContentSample extends Component {
   }
   navigateNextOrPrev = (reportName, nextOrPrev) => {
     var previousOrNextSample = this.findSample(reportName, nextOrPrev);
-    window.location.href = window.location.href.substr(0, window.location.href.lastIndexOf("/")) + "/" + previousOrNextSample.routerPath;
+    window.location.hash = `/report-viewer/${previousOrNextSample.routerPath}/`;
   }
   findSample(reportName, nextOrPrev) {
     var currentIndex = Object.values(samples).indexOf(samples.find(sample => sample.sampleName === reportName));
@@ -44,7 +44,7 @@ class MainContentSample extends Component {
     return samples[currentIndex];
   }
   newWindow = () => {
-    window.open(window.location.href + `/preview`, "_blank", "noreferrer");
+    window.open(window.location.href + `preview/`, "_blank", "noreferrer");
   }
   setReportsHeight() {
     var style = document.getElementById('reports-style');

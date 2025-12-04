@@ -24,7 +24,7 @@ class Sidebar extends Component {
                     </div>
                     <div className="ej-sb-toc">
                         {samples.map((sample, index) => (<div data-uid={index} key={index} onClick={this.props.onClick} className={`ej-sb-toc-card ${this.tocSelection(sample.routerPath)} `} tabIndex={-1}>
-                            <Link to={`/${sample.basePath}/${sample.routerPath}`} className="ej-sb-toc-card-link">
+                            <Link to={`/${sample.basePath}/${sample.routerPath}/`} className="ej-sb-toc-card-link">
                                 <div className={sample.imageDetails.isLandscape ? "ej-landscape-img" : "ej-portrait-img"} style={{ backgroundPositionY: `-${sample.imageDetails.isLandscape ? sample.imageDetails.index * 70 : sample.imageDetails.index * 120}px` }}></div>
                                 <div className="ej-sb-toc-title">{sample.sampleName}</div>
                                 </Link>

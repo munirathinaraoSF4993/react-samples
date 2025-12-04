@@ -76,7 +76,7 @@ class Header extends Component {
     render() {
         return (
             <ej-header>
-                <div className="ej-sb-header">
+                <div className={`ej-sb-header ${this.props.isViewer ? '' : 'designer-header'}`}>
                     <div className="ej-sb-left-side">
                         {this.props.isViewer ?
                             <div className="ej-sb-hamburger-icon ej-sb-icons" onClick={this.humbergerClick}></div> : ''}

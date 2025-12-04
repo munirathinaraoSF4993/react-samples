@@ -35,6 +35,7 @@ import TranscriptReport from './controls/transcript-report';
 import CMRReport from './controls/cmr-report';
 import InfographicsReport from './controls/infographics-report';
 import DynamicLogos from './controls/dynamic-logos';
+import HRPayroll from './controls/hr-payroll';
 import MultiLanguageReport from './controls/multi-language-report';
 import rdlcData from './rdlcData'
 
@@ -114,6 +115,7 @@ const SampleComponents = {
     CMRReport: CMRReport,
     InfographicsReport: InfographicsReport,
     DynamicLogos: DynamicLogos,
+    HRPayroll: HRPayroll,
     MultiLanguageReport: MultiLanguageReport
 }
 

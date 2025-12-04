@@ -27,6 +27,10 @@ import './controls/extensions/report-item-extensions/document.reportitem.css';
 import { EJPdfDocument } from './controls/extensions/report-item-extensions/pdfdocument.reportitem';
 import { EJHtmlDocument } from './controls/extensions/report-item-extensions/htmldocument.reportitem';
 
+//PDF Signature
+import './controls/extensions/report-item-extensions/pdf.signature.reportitem.css';
+import { EJPDFSignature } from './controls/extensions/report-item-extensions/pdf.signature.reportitem';
+
 let barcode = 'EJBarcode';
 let qrBarcode = 'EJQRBarcode';
 window[barcode] = EJBarcode;
@@ -44,6 +48,9 @@ let pdfDocument = 'EJPdfDocument';
 let htmlDocument = 'EJHtmlDocument';
 window[pdfDocument] = EJPdfDocument;
 window[htmlDocument] = EJHtmlDocument;
+
+let pdfSignature = 'EJPDFSignature';
+window[pdfSignature] = EJPDFSignature;
 
 //code-mirror
 import 'codemirror/lib/codemirror';
