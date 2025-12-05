@@ -13,6 +13,7 @@ const extensionsExportTemp = {
     'shape': 'export { EJShape }',
     'pdfDocument': 'export { EJPdfDocument }',
     'htmlDocument': 'export { EJHtmlDocument }',
+    'pdfSignature': 'export { EJPDFSignature }'
 }
 
 gulp.task('copy-src-assets', function (done) {
@@ -38,6 +39,7 @@ gulp.task('update-extensions-export', (done) => {
         'shape': ['shape.reportitem.js', 'shape'],
         'pdfDocument': ['pdfdocument.reportitem.js', 'pdfDocument'],
         'htmlDocument': ['htmldocument.reportitem.js', 'htmlDocument'],
+        'pdfSignature': ['pdf.signature.reportitem.js', 'pdfSignature']
     };
     const updateFile = (key, [filename, exportKey]) => {
         const filePath = `${extensionsItemDir}${filename}`;
