@@ -37,6 +37,7 @@ import InfographicsReport from './controls/infographics-report';
 import DynamicLogos from './controls/dynamic-logos';
 import HRPayroll from './controls/hr-payroll';
 import MultiLanguageReport from './controls/multi-language-report';
+import NDAReport from './controls/nda-report';
 import rdlcData from './rdlcData'
 
 window.React = React;
@@ -116,7 +117,8 @@ const SampleComponents = {
     InfographicsReport: InfographicsReport,
     DynamicLogos: DynamicLogos,
     HRPayroll: HRPayroll,
-    MultiLanguageReport: MultiLanguageReport
+    MultiLanguageReport: MultiLanguageReport,
+    NDAReport: NDAReport
 }
 
 function onReportLoaded(args) {
