@@ -10,7 +10,7 @@
     "@testing-library/user-event": "12.8.3",
     "bootstrap": "5.3.3",
     "create-react-class": "15.7.0",
-    "axios": "1.16.1",
+    "axios": "1.19.0",
     "fs": "0.0.1-security",
     "gulp": "4.0.2",
     "path": "0.12.7",
@@ -54,7 +54,7 @@
     "react-scripts": "5.0.1",
     "eslint": "9.19.0",
     "eslint-plugin-react": "7.37.4",
-    "@babel/core": "7.25.2",
+    "@babel/core": "7.29.7",
     "@babel/eslint-parser": "7.26.5",
     "babel-core": "7.0.0-bridge.0"
   },
